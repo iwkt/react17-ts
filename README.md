@@ -1,46 +1,81 @@
-# Getting Started with Create React App
+# React TypeScript eslint prettier 環境構築
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## アプリの作成
 
-## Available Scripts
+今回は react-typescript というアプリ名で作成した
 
-In the project directory, you can run:
+`npx create-react-app react-typescript --template typescript`
 
-### `npm start`
+## React version down 18 => 17
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`yarn remove react react-dom`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`npminstall(yarn add) react@17.0.2 react-dom@17.0.2`
 
-### `npm test`
+17.0.2 のインストールが終了したら index.tsx を下記へ書き換える
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+import React from 'react';import ReactDOMfrom 'react-dom';import './index.css';import App from './App';import reportWebVitalsfrom './reportWebVitals';ReactDOM.render(<React.StrictMode><App /></React.StrictMode>,document.getElementById('root'));// If you want to start measuring performance in your app, pass a funcLon// to log results (for example: reportWebVitals(console.log))// or send to an analyLcs endpoint. Learn more: hPps://bit.ly/CRA-vitalsreportWebVitals();
 
-### `npm run build`
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ESLint 導入
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### ライブラリをインストール
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`yarn add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser`
 
-### `npm run eject`
+### .eslintrc.js を作成
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react","prettier"],
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  }
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Prettier 導入
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### ライブラリをインストール
 
-## Learn More
+`yarn add -D prettier eslint-config-prettier eslint-plugin-prettier`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## .prettierrc を作成
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+
+{
+  "printWidth": 120,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false
+}
+
+```
+
+## 実行
+
+`yarn start`
