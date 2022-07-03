@@ -15,7 +15,17 @@
 17.0.2 のインストールが終了したら index.tsx を下記へ書き換える
 
 ```
-import React from 'react';import ReactDOMfrom 'react-dom';import './index.css';import App from './App';import reportWebVitalsfrom './reportWebVitals';ReactDOM.render(<React.StrictMode><App /></React.StrictMode>,document.getElementById('root'));// If you want to start measuring performance in your app, pass a funcLon// to log results (for example: reportWebVitals(console.log))// or send to an analyLcs endpoint. Learn more: hPps://bit.ly/CRA-vitalsreportWebVitals();
+import React from 'react';import ReactDOMfrom 'react-dom';
+import './index.css';import App from './App';import reportWebVitalsfrom './reportWebVitals';
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+// If you want to start measuring performance in your app, pass a funcLon
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analyLcs endpoint. Learn more: hPps://bit.ly/CRA-vitalsreportWebVitals();
 
 ```
 
