@@ -15,8 +15,12 @@
 17.0.2 のインストールが終了したら index.tsx を下記へ書き換える
 
 ```
-import React from 'react';import ReactDOMfrom 'react-dom';
-import './index.css';import App from './App';import reportWebVitalsfrom './reportWebVitals';
+import React from 'react';
+import ReactDOMfrom 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitalsfrom './reportWebVitals';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
